@@ -1,0 +1,2 @@
+chatFormat: "&0[[faction_rel_color][faction_role][faction_name]&0]&r [vault_prefix] [player] %factionsuuid_player_kills%:  [message]"
+noFaction: "no faction"

@@ -1,0 +1,11 @@
+name: FactionUUIDChat
+main: fr.black_eyes.factionsuuidchat.Main
+version: 1.0
+api-version: 1.13
+description: >
+             Plugin for Regenerating Chests
+softdepend: [PlaceholderAPI]
+depend: [Factions, Vault]
+commands:
+  chat:
+    description: Main Command

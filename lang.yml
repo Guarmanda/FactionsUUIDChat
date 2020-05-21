@@ -1,0 +1,7 @@
+
+noPermission: "&cYou don't have permission [Permission]"
+reloaded: "config was reloaded"
+help:
+  - "/chat reload"
+ 
+ 
