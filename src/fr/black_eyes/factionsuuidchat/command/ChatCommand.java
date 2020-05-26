@@ -3,6 +3,7 @@ package fr.black_eyes.factionsuuidchat.command;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,6 +45,9 @@ public class ChatCommand extends Utils implements CommandExecutor, TabCompleter 
 				if(args[0].equalsIgnoreCase("reload")) {
 					
 					config.reloadConfig();
+					Main.noFaction = config.getConfig().getString("noFaction");
+					Main.logmessages = config.getConfig().getBoolean("logMessages");
+					Main.isFactionOn = (Bukkit.getPluginManager().getPlugin("Factions") != null);
 					msg(sender, "reloaded", " ", " ");
 					
 				}
@@ -70,8 +74,8 @@ public class ChatCommand extends Utils implements CommandExecutor, TabCompleter 
 	}
 
 	boolean hasPerm(CommandSender sender, String permission) {
-		if (!sender.hasPermission("lootchest." + permission) && !sender.hasPermission("lootchest.admin") && !sender.hasPermission("lootchest.*")) {
-			msg(sender, "noPermission", "[Permission]", "lootchest." + permission);
+		if (!sender.hasPermission("chat." + permission) && !sender.hasPermission("chat.admin") && !sender.hasPermission("chat.*")) {
+			msg(sender, "noPermission", "[Permission]", "chat." + permission);
 			return false;
 		}
 		return true;

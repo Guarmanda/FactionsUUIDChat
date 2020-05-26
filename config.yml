@@ -1,2 +1,8 @@
+#all my plugin's tags are below, with []. Placeholderapi tags are with %%. 
 chatFormat: "&0[[faction_rel_color][faction_role][faction_name]&0]&r [vault_prefix] [player] %factionsuuid_player_kills%:  [message]"
 noFaction: "no faction"
+#hover messages? why not^^
+useHoverInfo: true
+hoverInfo: "Put double quotes in config for using '\\n' for new line in hover message \n&bkills: %factionsuuid_player_kills% \n&alevel: %player_exp_to_level%"
+logMessages: true
+updater: true

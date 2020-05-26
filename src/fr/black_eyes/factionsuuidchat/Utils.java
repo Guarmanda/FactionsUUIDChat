@@ -1,5 +1,8 @@
 package fr.black_eyes.factionsuuidchat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.CommandSender;
 
 public class Utils  {
@@ -17,8 +20,14 @@ public class Utils  {
 	}
 	
 	
-	
-	
+
+	public String colorizeMsg(String message, String color) {
+		List<String> words = new ArrayList<String>();
+		for(String word : message.split(" ")) {
+			words.add(color + word);
+		}
+		return words.toString().replace(", ", " ").replace("[", "").replace("]", "");
+	}
 
 	
 

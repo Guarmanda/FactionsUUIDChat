@@ -22,8 +22,8 @@ import org.bukkit.Bukkit;
 public class Updater {
 	static Main inst = Main.getInstance();
 	static Logger log = Main.getInstance().getLogger();
-	static String spigot_complete_id = "lootchest.61564";
-	static String spigot_id = "61564";
+	static String spigot_complete_id = "factionsuuid-chat.79109";
+	static String spigot_id = "79109";
 	
 	private static Object getLastVersionInfos() {
     	try {
@@ -66,10 +66,10 @@ public class Updater {
 				lastver = versionInfos.get("name").getAsString();
 	        }
 			if (!lastver.equals(installedVersion)) {
-			    log.info( "§aA new version " + lastver + " was found on Spigot (your version: " + installedVersion + "). Please update me! <3 - Link: " + lastverDownloadUrl);
+				Bukkit.getServer().getConsoleSender().sendMessage( "[FactionUUIDChat] §aA new version " + lastver + " was found on Spigot (your version: " + installedVersion + "). Please update me! <3 - Link: " + lastverDownloadUrl);
 			}
 			else {
-				log.info("§aThe plugin seems up to date.");
+				Bukkit.getServer().getConsoleSender().sendMessage( "[FactionUUIDChat] §aThe plugin seems up to date.");
 			}
 	    } catch (Exception ex) {
 	        log.info("Failed to check for a update on spigot.");
