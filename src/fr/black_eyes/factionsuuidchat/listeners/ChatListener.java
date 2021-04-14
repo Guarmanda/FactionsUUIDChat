@@ -23,7 +23,7 @@ public class ChatListener extends Utils implements Listener {
 	 FileConfiguration lang = Main.getConfigFiles().getLang();
 	
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
 	public void format(AsyncPlayerChatEvent e) {
 		if(Main.isFactionOn ) {
 			if(FactionsUtils.isFactionChat(e.getPlayer())) return;
