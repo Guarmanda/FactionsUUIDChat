@@ -1,6 +1,10 @@
 package fr.black_eyes.factionsuuidchat;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 import fr.black_eyes.factionsuuidchat.command.ChatCommand;
@@ -20,9 +24,12 @@ public class Main extends JavaPlugin {
 	private static Main instance;
 	private static Config config;
 	private static Permission perms = null;
+	public static HashMap<Player, String> channels = new HashMap<Player, String>();
+	public static Map<String, String> colors;
 	public static String noFaction;
 	public static Boolean logmessages;
 	public static Boolean isFactionOn;
+	public static Boolean isEssentials;
     private static Chat chat = null;
 	public void onDisable() {
 
@@ -50,10 +57,17 @@ public class Main extends JavaPlugin {
 		config.setConfig("useHoverInfo", true);
 		config.setConfig("hoverInfo","Put double quotes in config for using '\\n' for new line in hover message \n&bkills: %factionsuuid_player_kills% \n&alevel: %player_exp_to_level%"
 );
+		config.setConfig("itemFormat", "&8[&f{name} &7x{amount} {type}&8]");
+		config.setConfig("itemHoverFormat", "&f{name}\nx&7{amount} {type}\n{enchantments}\n{lore}");
         super.onEnable();
         if(config.getConfig().getBoolean("updater")) {
         	logInfo("Checking for update...");
-        	Updater.checkversion();
+        	new Updater(this);
+        }
+        isEssentials = false;
+        if(Bukkit.getServer().getPluginManager().isPluginEnabled("Essentials")){
+        	logInfo("Hooked into essentials for mute");
+        	isEssentials = true;
         }
         isFactionOn = (Bukkit.getPluginManager().getPlugin("Factions") != null);
 		this.getServer().getPluginManager().registerEvents(new ChatListener(), this);
@@ -62,6 +76,30 @@ public class Main extends JavaPlugin {
         setupPermissions();
         setupChat();
         noFaction = config.getConfig().getString("noFaction");
+         colors = new HashMap<String, String>();
+		colors.put("magic","&k");
+		colors.put("rgb","&#RRGGBB");
+		colors.put("black", "&0");
+		colors.put("dark_blue", "&1");
+		colors.put("dark_green", "&2");
+		colors.put("dark_aqua", "&3");
+		colors.put("dark_red", "&4");
+		colors.put("dark_purple", "&5");
+		colors.put("gold", "&6");
+		colors.put("gray", "&7");
+		colors.put("dark_gray", "&8");
+		colors.put("blue", "&9");
+		colors.put("green", "&a");
+		colors.put("aqua", "&b");
+		colors.put("red", "&c");
+		colors.put("light_purple","&d");
+		colors.put("yellow","&e");
+		colors.put("white","&f");
+		colors.put("bold","&l");
+		colors.put("strikethrough","&m");
+		colors.put("underline","&n");
+		colors.put("italic","&o");
+		colors.put("reset","&r");
 	}
     		
 

@@ -32,4 +32,8 @@ public class FactionsUtils {
 			com.massivecraft.factions.FPlayer fp = com.massivecraft.factions.FPlayers.getInstance().getByPlayer(pl);
 			return format.replace("[faction_rel_color]", fp.getRelationTo(fplayer).getColor().toString());
 	}
+	
+	
+	
+	
 }

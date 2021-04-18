@@ -4,5 +4,12 @@ noFaction: "no faction"
 #hover messages? why not^^
 useHoverInfo: true
 hoverInfo: "Put double quotes in config for using '\\n' for new line in hover message \n&bkills: %factionsuuid_player_kills% \n&alevel: %player_exp_to_level%"
+
+#You can use {item} or [item] or [i] to display an item in the chat, with chat.item
+#here is the text that will replace your {item} beacon
+itemFormat: '&8[&f{name} &7x{amount} {type}&8]'
+#here is the text that will be displayed when hovering the item description in chat
+itemHoverFormat: "&f{name}\nx&7{amount} {type}\n&7{enchantments}\n&5&o{lore}"
+
 logMessages: true
 updater: true
